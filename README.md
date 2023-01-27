@@ -1,6 +1,6 @@
-# VSCode ROS2 Workspace Template
+# MiniPupper ROS2 Workspace
 
-This template will get you set up using ROS2 with VSCode as your IDE.
+This workspace will get you set up using MiniPupper/ROS2 with VSCode as your IDE.
 
 See [how I develop with vscode and ros2](https://www.allisonthackston.com/articles/vscode_docker_ros2.html) for a more in-depth look on how to use this workspace.
 

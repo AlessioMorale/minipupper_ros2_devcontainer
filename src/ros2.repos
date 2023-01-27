@@ -4,7 +4,15 @@
 # Example:
 ############
 repositories:
-  examples:
+  mini_pupper_ros:
     type: git
-    url: https://github.com/ros2/examples.git
-    version: foxy
+    url: https://github.com/mangdangroboticsclub/mini_pupper_ros.git
+    version: ros2
+  ecl_core:
+    type: git
+    url: https://github.com/stonier/ecl_core.git
+    version: devel
+  ecl_lite:
+    type: git
+    url: https://github.com/stonier/ecl_lite.git
+    version: devel
