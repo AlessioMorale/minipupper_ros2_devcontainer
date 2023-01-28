@@ -6,30 +6,46 @@ on:
   workflow_dispatch:
     
 jobs:
-  test:
-    name: test
-    runs-on: ubuntu-latest
-    steps:
-      - 
-        name: Checkout code
-        uses: actions/checkout@v3
-      -
-        name: Test
-        uses: ./.github/actions/test/
+  # test:
+  #   name: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - 
+  #       name: Checkout code
+  #       uses: actions/checkout@v3
+  #     -
+  #       name: Test
+  #       uses: ./.github/actions/test/
 
-  lint:
-    name: ament_${{ matrix.linter }}
+  # lint:
+  #   name: ament_${{ matrix.linter }}
+  #   runs-on: ubuntu-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #         linter: [ ]
+    # steps:
+    #   - 
+    #     name: Checkout code
+    #     uses: actions/checkout@v3
+    #   -
+    #     name: Run linter
+    #     uses: ./.github/actions/lint/
+    #     env: 
+    #       LINTER: ${{ matrix.linter }}
+  docker:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-          linter: [cppcheck, cpplint, uncrustify, lint_cmake, xmllint, flake8, pep257]
     steps:
-      - 
-        name: Checkout code
-        uses: actions/checkout@v3
       -
-        name: Run linter
-        uses: ./.github/actions/lint/
-        env: 
-          LINTER: ${{ matrix.linter }}
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Build
+        uses: docker/build-push-action@v3
+        with:
+          file: .devcontainer/Dockerfile
+          build-args: WORKSPACE=.
+          push: false
