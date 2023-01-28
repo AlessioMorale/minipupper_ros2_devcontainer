@@ -1,5 +1,4 @@
-FROM althack/ros2:humble-dev 
-
+FROM althack/ros2:humble-gazebo-2023-01-14
 # ** [Optional] Uncomment this section to install additional packages. **
 #
 ENV DEBIAN_FRONTEND=noninteractive
